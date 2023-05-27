@@ -15,11 +15,11 @@
     const vm = Vue.createApp({
       data() {
         return {
-          text: '<h2>Hola Vue, vine a conquistarte y aprenderé de ti</h2>'
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png",
+          alt: "Esto es una imágen"
         };
       },
-      // template: `<div v-once v-text="text"></div>`
-      template: `<div v-once v-html="text"></div>`
+      template: `<img v-bind:src="img" v-bind:alt="alt">`
     }).mount("#app");
     console.log(vm);
   </script>
