@@ -15,17 +15,37 @@
     const vm = Vue.createApp({
       data() {
         return {
-          counter: 0
+          text: 'Hola vue, vine a conquistarte'
         };
       },
-      methods: {
-        increment() {
-          this.counter++;
-        }
-      },
-      template: `<button v-on:click="increment">{{ counter }}</button>`
+      // Al utilizar la directiva v-model, ya no es necesario usar el methods
+      // methods: {
+      //   input(e) {
+      //     this.text = e.target.value;
+      //   }
+      // },
+
+
+      // template: `<h2>{{text}}</h2>
+      // <input type="text" 
+      //   v-on:input="input" 
+      //   v-bind:value="text" 
+      // />`
+
+      // Podemos abreviar las directivas v-on y -bind usando @ y : respectivamente, tal como se aprecia a continuación
+      // template: `<h2>{{text}}</h2>
+      // <input type="text" 
+      //   @input="input" 
+      //   :value="text" 
+      // />`
+
+      // Para simplificar mucho más el código, es usando una combinación entre el v-on y el v-bind usando la directiva v-model, lo que nos permitirá sincronizar la vista con el modelo. De este modo, ya no necesitaríamos usar el methods      
+      template: `<h2>{{text}}</h2>
+      <input 
+        type="text" 
+        v-model="text" 
+      />`
     }).mount("#app");
-    console.log(vm);
   </script>
 </body>
 
