@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Vue js - Practicas</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
@@ -15,36 +15,23 @@
     const vm = Vue.createApp({
       data() {
         return {
-          text: 'Hola vue, vine a conquistarte'
+          firstname: "Darwin M.",
+          lastname: "Roa M.",
+          now: new Date(),
         };
       },
-      // Al utilizar la directiva v-model, ya no es necesario usar el methods
-      // methods: {
-      //   input(e) {
-      //     this.text = e.target.value;
-      //   }
-      // },
-
-
-      // template: `<h2>{{text}}</h2>
-      // <input type="text" 
-      //   v-on:input="input" 
-      //   v-bind:value="text" 
-      // />`
-
-      // Podemos abreviar las directivas v-on y -bind usando @ y : respectivamente, tal como se aprecia a continuación
-      // template: `<h2>{{text}}</h2>
-      // <input type="text" 
-      //   @input="input" 
-      //   :value="text" 
-      // />`
-
-      // Para simplificar mucho más el código, es usando una combinación entre el v-on y el v-bind usando la directiva v-model, lo que nos permitirá sincronizar la vista con el modelo. De este modo, ya no necesitaríamos usar el methods      
-      template: `<h2>{{text}}</h2>
-      <input 
-        type="text" 
-        v-model="text" 
-      />`
+      computed: {
+        fullname() {
+          return this.firstname + " " + this.lastname;
+        },
+        today() {
+          return this.now.toLocaleDateString();
+        }
+      },
+      template: `
+      <div>{{ fullname }}</div>
+      <div>{{ today }}</div>
+      `
     }).mount("#app");
   </script>
 </body>
